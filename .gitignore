@@ -1,0 +1,5 @@
+__pycache__/
+neural_network/training_data/
+doodle_recogniser/user_doodles/
+doodle_recogniser/stored_model.pth
+train_simplified/

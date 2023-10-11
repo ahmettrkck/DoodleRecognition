@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title> Doodle Recogniser</title>
+  <link rel="shortcut icon" href="{{url_for('static', filename='lgs_icon.ico')}}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="{{url_for('static', filename='draw.js')}}"></script>
+</head>
+
+<body onload="init()">
+
+  <div class="back_colour" style="background-image: url({{url_for('static', filename='back_colour.jpg')}})">
+    <div class="container">
+      <h1 class="text-center">Doodle Recogniser</h1>
+      <h3 id="instruction" class="text-center">Start doodling! Press "PREDICT" when you're happy.</h3>
+    </div>
+  </div>
+
+  {% block prediction %}
+  {% endblock %}
+
+  <div class="pt-xl-5"></div>
+
+  <div class="row justify-content-center" id="buttons">
+    <!-- Button to submit drawing-->
+    <input class="btn btn-primary col-md-1" type="button" value="PREDICT" id="btn" onclick="predict()">
+
+    <!-- Button to clear -->
+    <input class="btn btn-primary col-md-1 ml-5" type="button" value="Restart" id="clr" onclick="retry()">
+  </div>
+
+  <div class="pt-xl-5"></div>
+
+  <!-- Main content -->
+  <div class="row justify-content-center">
+    <canvas id="drawing_canvas" width="500" height="500" style="border:3px solid; margin:30px"></canvas>
+  </div>
+
+  {% block body %}
+  {% endblock %}
+
+</body>
+
+</html>
